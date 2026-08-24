@@ -1,0 +1,48 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10rem;
+  padding: 10px;
+  margin: 10px;
+}
+
+.textContainer {
+  padding: 1rem;
+  color: black;
+  font-size: large;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textInput {
+  border-radius: 10px;
+  border: 2px solid rgb(1, 71, 24);
+  box-shadow: 20px;
+  margin-bottom: 10px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: green;
+  color: rgb(0, 0, 0);
+  padding: 0.75rem 1.125rem;
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-size: var(--text-base);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
