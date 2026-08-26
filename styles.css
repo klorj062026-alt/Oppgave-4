@@ -46,6 +46,7 @@ body {
     "Helvetica Neue",
     sans-serif;
   padding: 2rem 1rem;
+  gap: 1rem;
 }
 
 .textInput {
@@ -100,4 +101,12 @@ body {
   content: "Text here will show up";
   color: #999;
   font-style: normal;
+}
+
+.quote-author {
+  font-style: italic;
+  color: #555;
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 1rem;
 }
