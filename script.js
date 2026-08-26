@@ -115,7 +115,7 @@ function shuffleWords(tekst) {
     const yod = Math.floor(Math.random() * (i + 1));
     [ordKopi[i], ordKopi[yod]] = [ordKopi[yod], ordKopi[i]];
   }
-
+  // returnerer ordkopi som en egen setning(string)
   return ordKopi.join(" ");
 }
 
