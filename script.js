@@ -1,10 +1,5 @@
 // Oppgave 4 DOM manipulasjon
 
-// Steg 1 Lage en variabel som lagrer stringene så vi kan hente de senere.
-let yodafiserteOrd = [];
-
-// Her henter jeg HTML elementene ved hjelp av queryselector og lagrer de i en variabel som jeg kan bruke senere.
-
 // Array av objekter med kjente sitater
 
 const sitater = [
@@ -74,6 +69,9 @@ const sitater = [
     occupation: "poet og forfatter",
   },
 ];
+
+// Her henter jeg HTML elementene ved hjelp av queryselector og lagrer de i en variabel som jeg kan bruke senere.
+
 const textinput = document.querySelector("#textinput");
 
 const yodafyer = document.querySelector("#yodafyBtn");
@@ -85,13 +83,14 @@ const resetButton = document.querySelector("#resetBtn");
 const quoteyFyer = document.querySelector("#quoteBtn");
 const quotafyedText = document.querySelector("#quotefyedTxt");
 
-// Funksjon som henter en random array fra objektet sitater, og returnerer det som en ny variabel kalt famousQuote(som jeg kan bruke utenfor funksjonen), som har plukket ut ett av arrayene
+// Funksjon som velger et tilfeldig indekstall (famousQuote), og bruker det til å hente og returnere ett objekt fra sitater-arrayet
 function getRandomQuote() {
   const famousQuote = Math.floor(Math.random() * sitater.length);
 
   return sitater[famousQuote];
 }
 
+// Eventlistener på QuoteyFyMe-knappen. Lager variablene randomQuote, blandetTekst og visningsTekst, og viser til slutt visningsTekst på siden.
 quoteyFyer.addEventListener("click", function () {
   const randomQuote = getRandomQuote();
   const blandetTekst = shuffleWords(randomQuote.quote);
@@ -99,17 +98,20 @@ quoteyFyer.addEventListener("click", function () {
   quotafyedText.innerHTML = visningsTekst;
 });
 
+// Rensker opp i teksten i det en laster siden på nytt eller trykker på reset text knappen
 function initYodaFy() {
   yodafyedText.textContent = "";
   quotafyedText.textContent = "";
   textinput.value = "";
 }
 
+// Tar imot String-parameteret(tekst)(Vi vet det er en string fordi vi senere kjører .split(" ") metoden) mens ordArray splitter setningen opp i individuelle strings, [...ordArray] lager en ny kopi av ordArray
 function shuffleWords(tekst) {
   const ordArray = tekst.split(" ");
   const ordKopi = [...ordArray];
-
+  // for loop som går baklengs igjennom arrayet (fra siste til første plass), og for hver posisjon velges et tilfeldig ord fra de gjenværende, ublandede ordene
   for (let i = ordKopi.length - 1; i > 0; i--) {
+    // array destructuring: bytter plass på ordet på posisjon i og det tilfeldig valgte ordet på posisjon yod
     const yod = Math.floor(Math.random() * (i + 1));
     [ordKopi[i], ordKopi[yod]] = [ordKopi[yod], ordKopi[i]];
   }
@@ -117,7 +119,7 @@ function shuffleWords(tekst) {
   return ordKopi.join(" ");
 }
 
-// Dette er funksjonen som deler opp ordene og lagrer stringene.
+// Eventlistener som henter teksten, sjekker om den er tom og kaller på shuffleWords funksjonen.
 yodafyer.addEventListener("click", function () {
   const inputSetning = textinput.value.trim();
 
